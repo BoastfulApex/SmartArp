@@ -1,0 +1,54 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <img src="{{ ASSETS_ROOT }}/img/AdminLTELogo.png" alt="Abba Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Abba </span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="https://i.pinimg.com/originals/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="{% url 'logout' %}" class="d-block">
+            {{ request.user.username }} - Chiqish
+          </a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item ">
+            <a href="{% url 'home' %}" class="nav-link {% if 'index' in segment %} active {% endif %}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Boshqaruv oynasi 
+              </p>
+            </a>
+              <li class="nav-item">
+                <a href="{% url 'plan_create' %}" class="nav-link {% if 'sliders' in segment %} active {% endif %}">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>Konten plan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'add_post' %}" class="nav-link {% if 'categories' in segment %} active {% endif %}">
+                  <i class="nav-icon fas fa-bars"></i>
+                  <p>Post</p>
+                </a>
+              </li>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  

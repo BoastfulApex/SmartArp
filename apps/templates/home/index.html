@@ -1,0 +1,141 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard2 {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed {% endblock body_class %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}  
+
+<div class="content-wrapper">
+  <div class="container" >
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th  scope="col">Proekt</th>
+              <th  scope="col">Manager</th>
+              <th colspan=2 scope="col">Instagram</th>
+              <th colspan=2 scope="col">Facebook</th>
+              <th colspan=2 scope="col">Youtube</th>
+              <th colspan=2 scope="col">Telegram</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for project in data %}
+              {% if project.day_success %}
+                <tr>
+              {% else %}
+                <tr class="failed_day">              
+              {% endif %}
+              <th scope="row">1</th>              
+              <td>{{project.project_name}}</td>
+              <td>{{project.manager}}</td>
+              {% if project.i_plan_type != "" %}
+                {% if project.i_plan_type == project.i_post_type %}
+                  <td colspan=2>{{project.i_plan_type}}</td>
+                {% else %}
+                  {% if project.i_post_type == "" %}
+                    <td colspan=2 class="failed" >{{project.i_plan_type}}</td>
+                  {% else %}
+                  <td colspan=1 class="failed" >{{project.i_plan_type}}</td>
+                  <td colspan=1 class="warning" >{{project.i_post_type}}</td>
+                  {% endif %}
+              {% endif %}
+              {% else %}
+                <td colspan=2 class="passive" ></td>
+              {% endif %}
+              {% if project.f_plan_type != "" %}
+                {% if project.f_plan_type == project.f_post_type %}
+                  <td colspan=2>{{project.f_plan_type}}</td>
+                {% else %}
+                  {% if project.f_post_type == "" %}
+                    <td colspan=2 class="failed" >{{project.f_plan_type}}</td>
+                  {% else %}
+                  <td colspan=1 class="failed" >{{project.f_plan_type}}</td>
+                  <td colspan=1 class="warning" >{{project.f_post_type}}</td>
+                  {% endif %}
+              {% endif %}
+              {% else %}
+                <td colspan=2 class="passive" ></td>
+              {% endif %}
+              {% if project.y_plan_type != "" %}
+                {% if project.y_plan_type == project.y_post_type %}
+                  <td colspan=2>{{project.y_plan_type}}</td>
+                {% else %}
+                  {% if project.y_post_type == "" %}
+                    <td colspan=2 class="failed" >{{project.y_plan_type}}</td>
+                  {% else %}
+                  <td colspan=1 class="failed" >{{project.y_plan_type}}</td>
+                  <td colspan=1 class="warning" >{{project.y_post_type}}</td>
+                  {% endif %}
+              {% endif %}
+              {% else %}
+                <td colspan=2 class="passive" ></td>
+              {% endif %}
+              {% if project.t_plan_type != "" %}
+                {% if project.t_plan_type == project.t_post_type %}
+                  <td colspan=2>{{project.t_plan_type}}</td>
+                {% else %}
+                  {% if project.t_post_type == "" %}
+                    <td colspan=2 class="failed" >{{project.t_plan_type}}</td>
+                  {% else %}
+                  <td colspan=1 class="failed" >{{project.t_plan_type}}</td>
+                  <td colspan=1 class="warning" >{{project.t_post_type}}</td>
+                  {% endif %}
+              {% endif %}
+              {% else %}
+                <td colspan=2 class="passive" ></td>
+              {% endif %}
+              {% endfor %}
+            </tr>
+          </tbody>
+      </table>
+</div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="{{ ASSETS_ROOT }}/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="{{ ASSETS_ROOT }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="{{ ASSETS_ROOT }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ ASSETS_ROOT }}/js/adminlte.js"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <script src="{{ ASSETS_ROOT }}/js/demo.js"></script>
+
+  <!-- PAGE PLUGINS -->
+  <!-- jQuery Mapael -->
+  <script src="{{ ASSETS_ROOT }}/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+  <script src="{{ ASSETS_ROOT }}/plugins/raphael/raphael.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+  <!-- ChartJS -->
+  <script src="{{ ASSETS_ROOT }}/plugins/chart.js/Chart.min.js"></script>
+
+  <!-- PAGE SCRIPTS -->
+  <script src="{{ ASSETS_ROOT }}/js/pages/dashboard2.js"></script>
+
+{% endblock javascripts %}

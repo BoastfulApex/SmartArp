@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{{ ASSETS_ROOT }}/favicon.ico" type="image/x-icon">
+  {% comment %} <link rel="canonical" href="https://appseed.us/adminlte"/> {% endcomment %}
+  <style>
+    .failed_day{
+      box-shadow:
+      inset 0 -2em 3em LightPink,
+            {% comment %} 0 0  0 0.5px LightPink {% endcomment %}
+            0.3em 0.3em 1em LightCoral;
+          
+      }
+      .failed {
+        background-color: IndianRed;
+        color: white;
+        box-shadow:
+        inset 0 -2em 3em Red,
+              0 0  0 2px Red
+              0.3em 0.5em 1em Red !important;
+        }
+
+      .warning {
+        color: white;
+        background-color: Orange;
+      }
+    
+    .success {
+      background-color: LimeGreen;
+    }
+    .passive{
+      background-color: Silver;
+    }
+  </style>
+  
+  <title>
+    Admin Abba - {% block title %}{% endblock %}
+  </title> 
+
+  {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+<body class="hold-transition {% block body_class %}{% endblock body_class %}">
+<div class="wrapper">
+
+    {% include 'includes/navigation.html' %}
+
+    {% include 'includes/sidebar.html' %}
+
+    {% block content %}{% endblock content %}
+
+    {% include 'includes/footer.html' %}
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} MAhsulot O'zgartirish {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} sidebar-mini {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}  
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>MAhsulot Create</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Bosh sahifa</a></li>
+              <li class="breadcrumb-item active">MAhsulot O'zgartirish</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Mahsulot</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+            <form role="form" method="post" action="" enctype="multipart/form-data">
+
+                {% csrf_token %} 
+                         
+                <div class="form-group">
+                  <label for="inputName">Mahsulot Nomi Uz</label>
+                  {{ form.name_uz }}
+              </div>
+              <div class="form-group">
+                <label for="inputName">Mahsulot Nomi Ru</label>
+                {{ form.name_ru }}
+            </div>
+            <div class="form-group">
+                <label for="inputName">Mahsulot Nomi En</label>
+                {{ form.name_en }}
+            </div>
+            <div class="form-group">
+                <label for="inputName">Mahsulot Tasnifi Uz</label>
+                {{ form.description_uz }}
+            </div>
+            <div class="form-group">
+                <label for="inputName">Mahsulot Tasnifi Ru</label>
+                {{ form.description_ru }}
+            </div>
+            <div class="form-group">
+                <label for="inputName">Mahsulot Tasnifi En</label>
+                {{ form.description_en }}
+            </div>
+            <div class=" form-select">
+              <label for="inputName">Mahsulot Narxi</label><br>
+              {{ form.price }}
+          </div>
+            <div class="form-select">
+              <label for="inputName">Mahsulot Kategoriyasi</label><br>
+              {{ form.category }}
+          </div>
+      <div class=" form-select">
+                <label for="inputName">Mahsulot Brendi</label><br>
+                {{ form.brand }}
+            </div>
+            <div class="form-select">
+              <label for="inputName">Mahsulot Toifasi</label><br>
+              {{ form.type }}
+          </div>
+          <div class="form-select">
+            <label for="inputName">Mahsulot Xarakteristikasi</label><br>
+            {{ form.characteristic_uz }}
+        </div>
+        <div class="form-select">
+          <label for="inputName">Mahsulot Xarakteristikasi</label><br>
+          {{ form.characteristic_ru }}
+      </div>
+      <div class="form-select">
+        <label for="inputName">Mahsulot Xarakteristikasi</label><br>
+        {{ form.characteristic_en }}
+    </div>
+</div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+          <!-- /.card -->
+      <div class="row">
+        <div class="col-12">
+          <div class="container ml-5">
+          <input type="submit" class="btn btn-success " value="Tasdiqlash">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Ranglar</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Ranglar</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            {% comment %} <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button> {% endcomment %}
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects">
+              <thead>
+                  <tr>
+                    
+                      <th style="width: 1%">
+                          #
+                      </th>
+                      <th style="width: 20%">
+                          Rang
+                      </th>
+                      <th style="width: 20%">
+                        Rasm
+                    </th>
+                    <th style="width: 20%">
+                  </th>
+                  <th style="width: 20%">
+                </th>
+          <th style="width: 20%">
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for color in colors %}
+                  <tr>
+                      <td>
+                          {{color.id}}
+                      </td>
+                      <td>
+                          <a>
+                              {{color.color}}
+                          </a>
+                          <br/>
+                      </td>
+                      <td>
+                        <ul class="list-inline">
+                          <li class="list-inline-item">
+                              <img alt="Avatar" class="table-avatar" src="{{ color.Photo1URL}}">
+                          </li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <img alt="Avatar" class="table-avatar" src="{{ color.Photo2URL}}">
+                        </li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                          <img alt="Avatar" class="table-avatar" src="{{ color.Photo3URL}}">
+                      </li>
+                  </ul>
+               </td>
+                      </td>
+                      <td class="project-actions text-right">
+                          {% comment %} <a class="btn btn-info btn-sm" href="{% url 'color_detail' color.id %}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a> {% endcomment %}
+                          <a class="btn btn-danger btn-sm" href="{% url 'color_delete' color.id %}">
+                              <i class="fas fa-trash">
+                              </i>
+                              O'chirish
+                          </a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              <a class="btn btn-succes text-right" href="{% url 'color_create' product.id %}">
+                <i class="fas fa-plus">
+                </i>
+                Qo'shish
+              </a>
+          </table>
+          </div>
+        <!-- /.card-body -->
+      </div>
+<!-- /.card -->
+
+    </section>
+
+
+    <!-- /.content -->
+  </div>
+
+  <!-- /.content-wrapper -->
+ {% endblock content %}
+
+ <!-- Specific Page JS goes HERE  -->
+ {% block javascripts %}
+ 
+   <!-- jQuery -->
+   <script src="{{ ASSETS_ROOT }}/plugins/jquery/jquery.min.js"></script>
+   <!-- Bootstrap 4 -->
+   <script src="{{ ASSETS_ROOT }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- AdminLTE App -->
+   <script src="{{ ASSETS_ROOT }}/js/adminlte.min.js"></script>
+   <!-- AdminLTE for demo purposes -->
+   <script src="{{ ASSETS_ROOT }}/js/demo.js"></script>
+ 
+ {% endblock javascripts %}
+ 
